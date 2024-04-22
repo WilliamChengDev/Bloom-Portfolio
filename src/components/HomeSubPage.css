@@ -1,0 +1,45 @@
+.sub-page-container{
+    height: 3000em;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-sub-page{
+    height: 82vh;
+    width: 95vw;
+    z-index: 10;
+    background-color: rgba(77, 107, 55, .3);
+    border-radius: 1em;
+    border-style: solid;
+    border-width: .05em;
+    border-color: whitesmoke;
+    box-shadow: 0 0 1em rgba(30, 43, 20, .5);
+    backdrop-filter: blur(1em);
+    margin: 1em;
+    /* internals */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sub-page-scroller{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#subpage1{
+    margin-top: 65em;
+}
+#subpage2{
+    margin-top: 100em;
+}
+#subpage3{
+    margin-top: 100em;
+}
+
+

@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+@font-face {
+  font-family: 'General Sans Semibold';
+  src: url('./fonts/GeneralSans-Semibold.woff2');
+}
+@font-face {
+  font-family: 'General Sans Medium';
+  src: url('./fonts/GeneralSans-Medium.woff2');
+}
+@font-face {
+  font-family: 'Against';
+  src: url('./fonts/Against.woff2');
+}
+
