@@ -1,7 +1,8 @@
 import './Home.css';
 import HomeSubPage from '../components/HomeSubPage';
 import { LoaderIconSmall } from '../components/loaderIconSmall';
-import FlowerIMG from "../assets/Blue_Flower.png";
+import { Canvas } from '@react-three/fiber';
+import { TestModel } from '../components/TestModel';
 
 
 export default function Home(){
@@ -9,7 +10,10 @@ export default function Home(){
     return(
         <div className='home-page'>
             <div className='flower-container'>
-                <img src={FlowerIMG} alt="" />
+                <Canvas>
+                    <fog attach="fog" color="#f4f0e8" near={.1} far={10} />
+                    <TestModel/>
+                </Canvas>
             </div>
             <div className='top-row'>
                 <div className='icon-container'>
@@ -19,9 +23,6 @@ export default function Home(){
             <div className='bloom-container'>
                 <h1 className='bloom'>BLOOM</h1>
             </div>
-            <HomeSubPage/>
-
-            
         </div>
     )
 }
