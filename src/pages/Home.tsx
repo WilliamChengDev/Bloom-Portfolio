@@ -5,11 +5,8 @@ import { useGSAP } from "@gsap/react";
 import { DrawSVGPlugin } from 'gsap-trial/all';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
-import * as THREE from 'three'
 
-
-
-export default function Home(props: { fibercall: boolean; }){
+export default function Home(){
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
     var tl = gsap.timeline({paused: true});
     tl.to(".cls-s", {duration:.8,drawSVG: false, stagger:0.1});
@@ -27,7 +24,7 @@ export default function Home(props: { fibercall: boolean; }){
         <div className='home-page'>
             <div className='flower-container'>
                 <Canvas>
-                    <TestModel fibercall = {props.fibercall}/>
+                    <TestModel/>
                 </Canvas>
             </div>
             <div className='top-row'>
