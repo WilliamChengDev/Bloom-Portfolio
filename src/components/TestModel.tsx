@@ -4,27 +4,33 @@ import { HomeModelBaked } from "./HomeModelBaked";
 import { useThree } from '@react-three/fiber';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useEffect } from 'react';
 
-export const TestModel = () => {
+export const TestModel = (props: { fibercall: boolean; }) => {
     gsap.registerPlugin(useGSAP);
-
     const camera = useThree(state => state.camera);
-    camera.lookAt(new THREE.Vector3(0,.5,0));
     camera.position.x = 2;
-    camera.position.y = 1;
+    camera.position.y = 8;
     camera.position.z = -.3;
-
+    var cameratl = gsap.timeline({paused: true})
     useGSAP(() => {
-        gsap.from(camera.position, {
-            y:8,
+        cameratl.to(camera.position, {
+            y:1,
             duration: 3,
-            delay:13,
         });
     })
+    useEffect(() => {
+        if(props.fibercall){
+            cameratl.play(0);
+            console.log("animation played");
+        }
+    },[props.fibercall]) 
+
+    camera.lookAt(new THREE.Vector3(0,7.5,0));
+
 
     return(
         <>
-            {/* <OrbitControls enableZoom={false} enablePan={false}/> */}
             <HomeModelBaked/>
             <ambientLight intensity={3}/>
             <fog attach="fog" color="#f4f0e8" near={2} far={7} />

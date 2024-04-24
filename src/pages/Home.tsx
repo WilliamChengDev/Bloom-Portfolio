@@ -9,11 +9,11 @@ import * as THREE from 'three'
 
 
 
-export default function Home(){
+export default function Home(props: { fibercall: boolean; }){
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
     var tl = gsap.timeline({paused: true});
     tl.to(".cls-s", {duration:.8,drawSVG: false, stagger:0.1});
-    
+
     const HomeIconIn = () => {
         console.log("home icon in");
         tl.play(0);
@@ -27,7 +27,7 @@ export default function Home(){
         <div className='home-page'>
             <div className='flower-container'>
                 <Canvas>
-                    <TestModel/>
+                    <TestModel fibercall = {props.fibercall}/>
                 </Canvas>
             </div>
             <div className='top-row'>
