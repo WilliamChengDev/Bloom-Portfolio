@@ -29,6 +29,7 @@ export default function Loader() {
         //BELOW IS FROM home.tsx
         // loadertl.fromTo('.top-row', {display: "none"}, {display: "unset", delay: 0.01}, '<');
         loadertl.fromTo(".bloom", {opacity: 0}, {opacity:1, delay:.3}, '<');
+        loadertl.fromTo(".flower-container", {opacity: 0}, {opacity:1, delay:.3}, '<');
         loadertl.fromTo('.bloom', {fontSize:'10em'}, {fontSize: '2em', translateY:'-1em' ,duration:2, delay:1});
 
     });

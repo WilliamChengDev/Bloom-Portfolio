@@ -5,6 +5,8 @@ import FlowerIMG from "../assets/Blue_Flower.png";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { DrawSVGPlugin } from 'gsap-trial/all';
+import { Canvas } from '@react-three/fiber';
+import { TestModel } from '../components/TestModel';
 
 
 export default function Home(){
@@ -25,7 +27,9 @@ export default function Home(){
     return(
         <div className='home-page'>
             <div className='flower-container'>
-                <img src={FlowerIMG} alt="" />
+                <Canvas>
+                    <TestModel/>
+                </Canvas>
             </div>
             <div className='top-row'>
                 <div className='icon-container' onMouseEnter={HomeIconIn} onMouseLeave={HomeIconOut}>
@@ -35,7 +39,6 @@ export default function Home(){
             <div className='bloom-container'>
                 <h1 className='bloom'>BLOOM</h1>
             </div>
-            <HomeSubPage/>
         </div>
     )
 }
