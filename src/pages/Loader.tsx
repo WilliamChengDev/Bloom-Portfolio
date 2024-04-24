@@ -5,7 +5,6 @@ import { DrawSVGPlugin } from 'gsap-trial/all';
 import './Loader.css'
 
 export default function Loader() {
-
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
 
     useGSAP(() => {
@@ -31,7 +30,6 @@ export default function Loader() {
         loadertl.fromTo(".bloom", {opacity: 0}, {opacity:1, delay:.3}, '<');
         loadertl.fromTo(".flower-container", {opacity: 0}, {opacity:1, delay:.3}, '<');
         loadertl.fromTo('.bloom', {fontSize:'10em'}, {fontSize: '2em', translateY:'-1em' ,duration:2, delay:1});
-
     });
 
     return (

@@ -23,7 +23,6 @@ export default function Home(){
         console.log("home icon out");
     }
 
-
     return(
         <div className='home-page'>
             <div className='flower-container'>

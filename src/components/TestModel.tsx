@@ -2,15 +2,25 @@ import * as THREE from 'three'
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { HomeModelBaked } from "./HomeModelBaked";
 import { useThree } from '@react-three/fiber';
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export const TestModel = () => {
+    gsap.registerPlugin(useGSAP);
 
     const camera = useThree(state => state.camera);
-
-    camera.position.x = 2;
-    camera.position.y = .6;
-    camera.position.z = -.3;
     camera.lookAt(new THREE.Vector3(0,.5,0));
+    camera.position.x = 2;
+    camera.position.y = 1;
+    camera.position.z = -.3;
+
+    useGSAP(() => {
+        gsap.from(camera.position, {
+            y:8,
+            duration: 3,
+            delay:13,
+        });
+    })
 
     return(
         <>
