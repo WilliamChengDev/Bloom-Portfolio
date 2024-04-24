@@ -1,8 +1,6 @@
-
-
   body{
-      overscroll-behavior-x: none;
-      overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
   }
 
   .loader-contents{

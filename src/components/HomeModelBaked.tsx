@@ -17,7 +17,6 @@ type GLTFResult = GLTF & {
     Rock001: THREE.Mesh
   }
   materials: {}
-  animations: GLTFAction[]
 }
 
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>

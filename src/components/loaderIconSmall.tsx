@@ -63,6 +63,7 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
         className="cls-s"
       />
       <circle
+        id="circlesmall"
         cx={42.37}
         cy={42.37}
         r={9.68}

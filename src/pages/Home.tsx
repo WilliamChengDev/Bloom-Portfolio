@@ -1,7 +1,5 @@
 import './Home.css';
-import HomeSubPage from '../components/HomeSubPage';
 import { LoaderIconSmall } from '../components/loaderIconSmall';
-import FlowerIMG from "../assets/Blue_Flower.png";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { DrawSVGPlugin } from 'gsap-trial/all';
@@ -11,18 +9,25 @@ import { TestModel } from '../components/TestModel';
 
 export default function Home(){
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
-    var tl = gsap.timeline({paused: true});
-    tl.to(".cls-s", {duration:.8,drawSVG: false, stagger:0.1});
+
+    var iconI = gsap.timeline({paused: true});
+    useGSAP(() => {
+        iconI.to(".cls-s", {duration:.3,drawSVG: false, ease:"expo.in"});
+        iconI.to("#circlesmall", {duration:.3, scale:3, transformOrigin: "center"});
+    });
+    
     
     const HomeIconIn = () => {
+        iconI.play(0);
         console.log("home icon in");
-        tl.play(0);
     }
 
     const HomeIconOut = () => {
+        // iconI.pause();
+        iconI.reverse();
+        // iconI.play();
         console.log("home icon out");
     }
-
 
     return(
         <div className='home-page'>
