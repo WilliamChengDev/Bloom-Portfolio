@@ -10,7 +10,7 @@
     padding: 2em;
     height: 3em;
     display: flex;
-    background-color: var(--bg-color);
+    /* background-color: var(--bg-color); */
     position: fixed;
     z-index: 0;
 }

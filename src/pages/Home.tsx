@@ -1,12 +1,12 @@
 import './Home.css';
-import HomeSubPage from '../components/HomeSubPage';
 import { LoaderIconSmall } from '../components/loaderIconSmall';
-import FlowerIMG from "../assets/Blue_Flower.png";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { DrawSVGPlugin } from 'gsap-trial/all';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
+import * as THREE from 'three'
+
 
 
 export default function Home(){
