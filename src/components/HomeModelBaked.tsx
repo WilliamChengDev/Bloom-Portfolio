@@ -25,24 +25,52 @@ type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicE
 export function HomeModelBaked(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('./models/HomeModelBaked.gltf') as GLTFResult
 
-  const soilTexture = useTexture("./models/textures/Soil11.jpg");
+  const soilTexture = useTexture("./models/textures/Soil12.jpg"); //soil texture
   soilTexture.flipY = false;
   soilTexture.colorSpace = THREE.SRGBColorSpace;
-
-  const soilMaterial = new THREE.MeshStandardMaterial({
+  const soilMaterial = new THREE.MeshStandardMaterial({ //soil material
     map: soilTexture,
   });
 
+  const flowerTexture = useTexture("./models/textures/Flower.jpg"); //flower texture
+  flowerTexture.flipY = false;
+  flowerTexture.colorSpace = THREE.SRGBColorSpace;
+  const flowerMaterial = new THREE.MeshStandardMaterial({ //flower material
+    map: flowerTexture,
+  });
+
+  const flatRockTexture = useTexture("./models/textures/RockFlat.jpg"); //rock texture
+  flatRockTexture.flipY = false;
+  flatRockTexture.colorSpace = THREE.SRGBColorSpace;
+  const flatRockMaterial = new THREE.MeshStandardMaterial({ //flower material
+    map: flatRockTexture,
+  });
+
+  const tallRockTexture = useTexture("./models/textures/RockTall.jpg"); //rock texture
+  tallRockTexture.flipY = false;
+  tallRockTexture.colorSpace = THREE.SRGBColorSpace;
+  const tallRockMaterial = new THREE.MeshStandardMaterial({ //flower material
+    map: tallRockTexture,
+  });
+
+  const pebbleTexture = useTexture("./models/textures/pebbles.jpg"); //rock texture
+  pebbleTexture.flipY = false;
+  pebbleTexture.colorSpace = THREE.SRGBColorSpace;
+  const pebbleMaterial = new THREE.MeshStandardMaterial({ //flower material
+    map: pebbleTexture,
+  });
+
+
   return (
     <group {...props} dispose={null}>
-      <group name="Point" position={[2.102, 4.66, -0.94]} rotation={[-0.25, -0.02, -0.472]} scale={10.1}>
+      {/* <group name="Point" position={[2.102, 4.66, -0.94]} rotation={[-0.25, -0.02, -0.472]} scale={10.1}>
         <spotLight name="Point_Orientation" intensity={2000} angle={0.153} penumbra={0.15} decay={2} color="#fde2b8" rotation={[-Math.PI / 2, 0, 0]} />
-      </group>
+      </group> */}
       <mesh name="Plane12513" geometry={nodes.Plane12513.geometry} material={soilMaterial} position={[0, 0.039, 0]} scale={9.016} />
-      <mesh name="Yellow_Flower" geometry={nodes.Yellow_Flower.geometry} material={nodes.Yellow_Flower.material} />
-      <mesh name="pebble940" geometry={nodes.pebble940.geometry} material={nodes.pebble940.material} position={[0, -0.031, 0]} />
-      <mesh name="Rock" geometry={nodes.Rock.geometry} material={nodes.Rock.material} />
-      <mesh name="Rock001" geometry={nodes.Rock001.geometry} material={nodes.Rock001.material} />
+      <mesh name="Yellow_Flower" geometry={nodes.Yellow_Flower.geometry} material={flowerMaterial} />
+      <mesh name="pebble940" geometry={nodes.pebble940.geometry} material={pebbleMaterial} position={[0, -0.031, 0]} />
+      <mesh name="Rock" geometry={nodes.Rock.geometry} material={flatRockMaterial} />
+      <mesh name="Rock001" geometry={nodes.Rock001.geometry} material={tallRockMaterial} />
     </group>
   )
 }

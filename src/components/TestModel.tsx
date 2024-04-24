@@ -6,8 +6,8 @@ export const TestModel = () => {
         <>
             <OrbitControls />
             <HomeModelBaked/>
-            <ambientLight intensity={1}/>
-            <fog attach="fog" color="#f4f0e8" near={1} far={8} />
+            <ambientLight intensity={2}/>
+            <fog attach="fog" color="#f4f0e8" near={2} far={7} />
         </>
     );
 }
