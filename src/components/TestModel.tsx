@@ -1,12 +1,13 @@
 import { OrbitControls } from "@react-three/drei";
-import { HomeModel } from "./HomeModel";
+import { HomeModelBaked } from "./HomeModelBaked";
 
 export const TestModel = () => {
     return(
         <>
             <OrbitControls />
-            <HomeModel/>
-            <ambientLight intensity={.1}/>
+            <HomeModelBaked/>
+            <ambientLight intensity={1}/>
+            <fog attach="fog" color="#f4f0e8" near={1} far={8} />
         </>
     );
 }

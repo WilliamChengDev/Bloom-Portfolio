@@ -11,7 +11,6 @@ export default function Home(){
         <div className='home-page'>
             <div className='flower-container'>
                 <Canvas>
-                    <fog attach="fog" color="#f4f0e8" near={.1} far={10} />
                     <TestModel/>
                 </Canvas>
             </div>
