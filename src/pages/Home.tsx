@@ -5,15 +5,12 @@ import { useGSAP } from "@gsap/react";
 import { DrawSVGPlugin } from 'gsap-trial/all';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
-import * as THREE from 'three'
-
-
 
 export default function Home(){
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
     var tl = gsap.timeline({paused: true});
     tl.to(".cls-s", {duration:.8,drawSVG: false, stagger:0.1});
-    
+
     const HomeIconIn = () => {
         console.log("home icon in");
         tl.play(0);
