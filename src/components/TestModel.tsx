@@ -5,7 +5,6 @@ import { useThree } from '@react-three/fiber';
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useEffect, useState } from 'react';
-import { OrbitControls } from '@react-three/drei';
 
 export const TestModel = (props : {clientX : number, clientY: number}) => {
     gsap.registerPlugin(useGSAP);
@@ -13,16 +12,20 @@ export const TestModel = (props : {clientX : number, clientY: number}) => {
     const[camX, setCamX] = useState(2); //front-back
     const[camY, setCamY] = useState(0.6); //height
     const[camZ, setCamZ] = useState(0); //left-right
+    camera.position.set(camX, camY, camZ);
     
     const calculateX = () => {
         var distance = (props.clientX - window.innerWidth/2)/window.innerWidth*2;
         return distance;
     }
+
+    const calculateY = () => {
+        var distance = (props.clientY - window.innerHeight/2)/window.innerHeight*2;
+        return distance;
+    }
     
     useEffect(() => {
-        setCamZ(calculateX()*0.5);
-        camera.position.set(camX, camY, camZ); //track camera position
-        camera.lookAt(new THREE.Vector3(0,.7,0)); //look at flower        
+        camera.lookAt(new THREE.Vector3(0,calculateY()*0.2+0.5,calculateX()*0.2)); //look at flower        
     });
 
     return(
