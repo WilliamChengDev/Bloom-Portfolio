@@ -37,9 +37,6 @@ export default function Home(){
                     <LoaderIconSmall/>
                 </div>
             </div>
-            <div className='bloom-container'>
-                <h1 className='bloom'>BLOOM</h1>
-            </div>
         </div>
     )
 }

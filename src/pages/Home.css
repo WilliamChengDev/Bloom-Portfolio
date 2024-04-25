@@ -23,26 +23,6 @@
     /* DO NOT USE ANY JUSTIFY OR ANY ALIGN FOR SVG OR WILL NOT SHOW   */
 }
 
-.bloom-container{
-    width: 100vw;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    margin-top: 1em;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.bloom{
-    font-size: 1em;
-    font-family: Against;
-    font-weight: normal;
-    color: var(--font-color);
-    margin-top: 1.7em;
-}
-
 .flower-container{
     height: 100vh;
     width: 100vw;
