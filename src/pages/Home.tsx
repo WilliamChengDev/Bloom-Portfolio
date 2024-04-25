@@ -8,16 +8,21 @@ import { TestModel } from '../components/TestModel';
 
 export default function Home(){
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
-    var tl = gsap.timeline({paused: true});
-    tl.to(".cls-s", {duration:.8,drawSVG: false, stagger:0.1});
 
+    var iconI = gsap.timeline({paused: true});
+    useGSAP(() => {
+        iconI.to(".cls-s", {duration:.3,drawSVG: false, ease:"expo.in"});
+        iconI.to("#circlesmall", {duration:.3, scale:4, transformOrigin: "center"});
+        iconI.fromTo("#home", {opacity:0, scale:0.5, transformOrigin: "center"}, {opacity: 1, scale:.8, duration:.3, transformOrigin: "center", delay:.2}, '<');
+    });
+    
+    
     const HomeIconIn = () => {
-        console.log("home icon in");
-        tl.play(0);
+        iconI.play(0);
     }
 
     const HomeIconOut = () => {
-        console.log("home icon out");
+        iconI.reverse();
     }
 
     return(
