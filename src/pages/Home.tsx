@@ -5,31 +5,41 @@ import { useGSAP } from "@gsap/react";
 import { DrawSVGPlugin } from 'gsap-trial/all';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
+import { useState } from 'react';
 
 export default function Home(){
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
 
-    var iconI = gsap.timeline({paused: true});
+    const [iconI, setIconI] = useState(gsap.timeline({paused: true})); //gotta store timeline in state so it doesn't reload on DOM rerender
+    
     useGSAP(() => {
         iconI.to(".cls-s", {duration:.3,drawSVG: false, ease:"expo.in"});
         iconI.to("#circlesmall", {duration:.3, scale:4, transformOrigin: "center"});
         iconI.fromTo("#home", {opacity:0, scale:0.5, transformOrigin: "center"}, {opacity: 1, scale:.8, duration:.3, transformOrigin: "center", delay:.2}, '<');
     });
-    
-    
     const HomeIconIn = () => {
-        iconI.play(0);
+        iconI.play();
+        console.log("running");
     }
-
     const HomeIconOut = () => {
         iconI.reverse();
     }
 
+    const [mouseX, setMouseX] = useState(0);
+    const [mouseY, setMouseY] = useState(0);
+    const trackMouse = (e:React.MouseEvent) => {
+        setMouseX(e.clientX);
+        setMouseY(e.clientY);
+    }
+
     return(
         <div className='home-page'>
-            <div className='flower-container'>
+            <div className='flower-container' onMouseMove={trackMouse}>
                 <Canvas>
-                    <TestModel/>
+                    <TestModel 
+                        clientX = {mouseX}
+                        clientY = {mouseY}
+                    />
                 </Canvas>
             </div>
             <div className='top-row'>
@@ -37,9 +47,9 @@ export default function Home(){
                     <LoaderIconSmall/>
                 </div>
             </div>
-            <div className='bloom-container'>
+            {/* <div className='bloom-container'>
                 <h1 className='bloom'>BLOOM</h1>
-            </div>
+            </div> */}
         </div>
     )
 }
