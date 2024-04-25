@@ -9,7 +9,7 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     <defs>
       <style>
         {
-          ".cls-s{fill:none;stroke:#34412c;stroke-miterlimit:10;stroke-width:2px;}"
+          ".cls-s{fill:none;stroke:#34412c;stroke-miterlimit:10;stroke-width:2px}"
         }
       </style>
     </defs>
@@ -68,11 +68,19 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
         cy={42.37}
         r={9.68}
         style={{
+          strokeWidth: 0,
           fill: "#34412c",
+        }}
+      />
+      <path
+        id="home"
+        d="M61.91 39.22 43.33 23.29c-.54-.47-1.34-.47-1.89 0L22.86 39.22c-1.02.88-.4 2.55.94 2.55h4.76v18.62c0 .8.65 1.45 1.45 1.45h8.32V49.76h8.1v12.08h8.32c.8 0 1.45-.65 1.45-1.45V41.77h4.76c1.34 0 1.96-1.67.94-2.55Z"
+        style={{
+          fill: "#f4f0e8",
           strokeWidth: 0,
         }}
       />
     </g>
   </svg>
 )
-export  {SvgComponent as LoaderIconSmall}
+export {SvgComponent as LoaderIconSmall}

@@ -13,20 +13,17 @@ export default function Home(){
     var iconI = gsap.timeline({paused: true});
     useGSAP(() => {
         iconI.to(".cls-s", {duration:.3,drawSVG: false, ease:"expo.in"});
-        iconI.to("#circlesmall", {duration:.3, scale:3, transformOrigin: "center"});
+        iconI.to("#circlesmall", {duration:.3, scale:4, transformOrigin: "center"});
+        iconI.fromTo("#home", {opacity:0, scale:0.5, transformOrigin: "center"}, {opacity: 1, scale:.8, duration:.3, transformOrigin: "center", delay:.2}, '<');
     });
     
     
     const HomeIconIn = () => {
         iconI.play(0);
-        console.log("home icon in");
     }
 
     const HomeIconOut = () => {
-        // iconI.pause();
         iconI.reverse();
-        // iconI.play();
-        console.log("home icon out");
     }
 
     return(
