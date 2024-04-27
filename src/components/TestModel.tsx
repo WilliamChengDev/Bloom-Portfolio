@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-// import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { HomeModelBaked } from "./HomeModelBaked";
 import { useThree } from '@react-three/fiber';
 import { gsap } from "gsap";
@@ -24,23 +23,11 @@ export const TestModel = (props : {clientX : number, clientY: number}) => {
         var distance = (props.clientY - window.innerHeight/2)/window.innerHeight*2;
         return distance;
     }
-    
-    // useEffect(() => {
-    //     camera.lookAt(new THREE.Vector3(0, 0.7, 0)); //look at flower        
-    //     setZTarget(calculateX()*0.5); //set target to lerp to horizontally
-    //     // setCamZ(camera.position.z);
-    //     // camera.position.set(camX, camY, camZ); 
-    //     gsap.to(camera.position, {z: zTarget});
-    //     console.log(camera.position);
-    // });
 
     useEffect(() => {
         setZTarget(calculateX()*0.5); //set target to lerp to horizontally
         setYTarget(calculateY()*0.3+1.4); //set target to lerp to horizontally
         camera.position.lerp(new THREE.Vector3(camX, yTarget, zTarget), 1);
-        // gsap.to(camera.position, {z: zTarget, duration:.1});
-        // setCamZ(camera.position.z);
-        // camera.position.set(camX, camY, camZ); 
         camera.lookAt(new THREE.Vector3(0,.7,0)); //look at flower        
         console.log(camera.position.y);
     });
