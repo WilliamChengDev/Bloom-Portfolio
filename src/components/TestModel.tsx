@@ -26,10 +26,9 @@ export const TestModel = (props : {clientX : number, clientY: number}) => {
 
     useEffect(() => {
         setZTarget(calculateX()*0.5); //set target to lerp to horizontally
-        setYTarget(calculateY()*0.3+1.4); //set target to lerp to horizontally
+        setYTarget(calculateY()*0.3+.8); //set target to lerp to vertically
         camera.position.lerp(new THREE.Vector3(camX, yTarget, zTarget), 1);
         camera.lookAt(new THREE.Vector3(0,.7,0)); //look at flower        
-        console.log(camera.position.y);
     });
 
     return(

@@ -35,7 +35,7 @@ export default function Home(){
     return(
         <div className='home-page'>
             <div className='flower-container' onMouseMove={trackMouse}>
-                <Canvas>
+                <Canvas style={{background: "rgba(255, 99, 71, 0)"}}>
                     <TestModel 
                         clientX = {mouseX}
                         clientY = {mouseY}
@@ -46,6 +46,9 @@ export default function Home(){
                 <div className='icon-container' onMouseEnter={HomeIconIn} onMouseLeave={HomeIconOut}>
                     <LoaderIconSmall/>
                 </div>
+            </div>
+            <div className='title'>
+                <h1>BLOOM</h1>
             </div>
         </div>
     )

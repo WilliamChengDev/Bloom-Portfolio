@@ -10,9 +10,9 @@
     padding: 2em;
     height: 3em;
     display: flex;
-    /* background-color: var(--bg-color); */
     position: fixed;
     z-index: 0;
+    pointer-events: none;
 }
 
 .icon-container{
@@ -20,13 +20,13 @@
     width: 3em;
     aspect-ratio: 1/1;
     display: flex;
+    pointer-events: all;
     /* DO NOT USE ANY JUSTIFY OR ANY ALIGN FOR SVG OR WILL NOT SHOW   */
 }
 
 .flower-container{
     height: 100vh;
     width: 100vw;
-    background-color: var(--bg-color);
     position: fixed;
     z-index: 0;
     display: flex;
@@ -37,4 +37,22 @@
 .flower-container img{
     width: 90%;
     aspect-ratio: 4/3;
+}
+
+.title{
+    display: flex;
+    width: 100vw;
+    height: fit-content;
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+
+.title h1{
+    color: var(--font-color);
+    font-family: 'General Sans Semibold';
+    font-size: 25vw;
 }
