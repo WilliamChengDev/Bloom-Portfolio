@@ -1,0 +1,18 @@
+.top-row{
+    width: 100vw;
+    padding: 2em;
+    height: 3em;
+    display: flex;
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.icon-container{
+    height: 3em;
+    width: 3em;
+    aspect-ratio: 1/1;
+    display: flex;
+    pointer-events: all;
+    /* DO NOT USE ANY JUSTIFY OR ANY ALIGN FOR SVG OR WILL NOT SHOW   */
+}

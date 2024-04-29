@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import { useGSAP } from '@gsap/react';
 import { gsap } from "gsap";
 import { DrawSVGPlugin } from 'gsap-trial/all';
+import TopRow from './components/TopRow';
 
 export default function App() {
   gsap.registerPlugin(useGSAP, DrawSVGPlugin);
@@ -34,6 +35,7 @@ export default function App() {
   return (
     <>
       {/* <Loader/> */}
+      <TopRow/>
       <Home/>
     </> 
   )
