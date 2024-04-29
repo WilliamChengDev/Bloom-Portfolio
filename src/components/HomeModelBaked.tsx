@@ -4,7 +4,6 @@ Command: npx gltfjsx@6.2.16 public/models/HomeModelBaked.gltf -t -k
 */
 
 import * as THREE from 'three'
-import React, { useRef } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 
@@ -19,10 +18,8 @@ type GLTFResult = GLTF & {
   materials: {}
 }
 
-type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>
-
 export function HomeModelBaked(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('./models/HomeModelBaked.gltf') as GLTFResult
+  const { nodes } = useGLTF('./models/HomeModelBaked.gltf') as GLTFResult
 
   const soilTexture = useTexture("./models/textures/Soil12.jpg"); //soil texture
   soilTexture.flipY = false;

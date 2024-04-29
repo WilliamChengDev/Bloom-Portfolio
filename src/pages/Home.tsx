@@ -2,7 +2,6 @@ import './Home.css';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
 import { useState } from 'react';
-import TopRow from '../components/TopRow';
 
 export default function Home(){
 

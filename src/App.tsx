@@ -1,5 +1,4 @@
 import './App.css'
-import Loader from './pages/Loader'
 import Home from './pages/Home'
 import { useGSAP } from '@gsap/react';
 import { gsap } from "gsap";
