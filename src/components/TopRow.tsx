@@ -18,7 +18,6 @@ export default function TopRow(){
     });
     const HomeIconIn = () => {
         iconI.play();
-        console.log("running");
     }
     const HomeIconOut = () => {
         iconI.reverse();
