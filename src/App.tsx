@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from "gsap";
 import { DrawSVGPlugin } from 'gsap-trial/all';
 import TopRow from './components/TopRow';
+import TransitionCover from './components/TransitionCover';
 
 export default function App() {
   gsap.registerPlugin(useGSAP, DrawSVGPlugin);
@@ -34,6 +35,7 @@ export default function App() {
 
   return (
     <>
+      <TransitionCover/>
       {/* <Loader/> */}
       <TopRow/>
       <Home/>
