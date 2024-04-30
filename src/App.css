@@ -21,3 +21,8 @@
   src: url('./fonts/Against.woff2');
 }
 
+.app-container{
+  width: 100vw;
+  height: 100vh;
+  pointer-events: all;
+}

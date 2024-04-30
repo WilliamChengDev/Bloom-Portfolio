@@ -5,6 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from "gsap";
 import TopRow from './components/TopRow';
 import TransitionCover from './components/TransitionCover';
+import { useEffect, useRef, useState } from 'react';
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -33,12 +34,30 @@ export default function App() {
       loadertl.fromTo(".title", {opacity: 0}, {opacity:1}, '<');
   });
 
+  const[scroll, setScroll] = useState(0); //scrolling var
+  const scrollInProgress = useRef(false); //boolean for throttling
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if(scrollInProgress.current){return;} //if scrolling do nothing
+    scrollInProgress.current = true; //if not set scrolling to true
+    setScroll((prev) => prev+1); //update scroll
+    setTimeout(() => { //check every 1000ms
+      scrollInProgress.current = false; //set scrolling to false
+    }, 1500);
+  }
+
+  useEffect(() => {
+    console.log(scroll);
+  })
+
   return (
     <>
-      <TransitionCover/>
+    <div className='app-container' onWheel={handleScroll}>
+      <TransitionCover page={scroll}/>
       <Loader/>
       <TopRow/>
       <Home/>
+    </div>
     </> 
   )
 }
