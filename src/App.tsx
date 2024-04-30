@@ -3,21 +3,20 @@ import Loader from './pages/Loader'
 import Home from './pages/Home'
 import { useGSAP } from '@gsap/react';
 import { gsap } from "gsap";
-import { DrawSVGPlugin } from 'gsap-trial/all';
 import TopRow from './components/TopRow';
 import TransitionCover from './components/TransitionCover';
 
 export default function App() {
-  gsap.registerPlugin(useGSAP, DrawSVGPlugin);
+  gsap.registerPlugin(useGSAP);
 
   useGSAP(() => { //main animation timeline
       console.log('page loaded')
       var loadertl = gsap.timeline({repeat:0});
-      loadertl.to(".cls-1", {duration:.8,drawSVG: false, stagger:0.1});
-      loadertl.to(".cls-1", {duration:1,drawSVG: true, stagger:0.1, ease: 'expo'});
-      loadertl.to(".cls-1", {duration:.8,drawSVG: false, stagger:0.1, ease: 'expo'});
-      loadertl.to("#circle", {duration:.5, opacity:0});
-      loadertl.to(".loader-bg", {duration:.8, opacity:0, ease: 'power4.in'}, '<');
+      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:165, stagger:0.1, ease:"power2.out"});
+      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:0, stagger:0.1, ease:"expo"});
+      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:165, stagger:0.1, ease:"power2.out"});
+      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:0, stagger:0.1, ease:"expo"});
+      loadertl.to(".loader-bg", {duration:.8, opacity:0, ease: 'power4.in'});
       loadertl.fromTo("#line1",{translateX: '-200%'}, {duration:5, translateX: '0%', ease: 'power3.out'}, '<90%');
       loadertl.from("#line2", {duration:5, translateX: '280em', ease: 'power2'}, '<');
       loadertl.from("#line3", {duration:5, translateX: '-400em', ease: 'power2.out'}, '<');
@@ -31,6 +30,7 @@ export default function App() {
       //BELOW IS FROM home.tsx
       loadertl.fromTo('.top-row', {display: "none"}, {display: "unset", delay: 0.01}, '<');
       loadertl.fromTo(".flower-container", {opacity: 0}, {opacity:1, delay:.7}, '<');
+      loadertl.fromTo(".title", {opacity: 0}, {opacity:1}, '<');
   });
 
   return (

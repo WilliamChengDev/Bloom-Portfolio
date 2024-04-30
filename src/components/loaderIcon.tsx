@@ -10,7 +10,7 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
     <defs>
       <style>
         {
-          ".cls-1{fill:none;stroke:#34412c;stroke-miterlimit:10;stroke-width:3px}"
+          ".cls-1{fill:none; stroke:#34412c; stroke-miterlimit:10; stroke-width:3px; stroke-dasharray:175; stroke-dashoffset:0; }"
         }
       </style>
     </defs>
