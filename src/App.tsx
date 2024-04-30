@@ -37,7 +37,7 @@ export default function App() {
   const[scroll, setScroll] = useState(0); //scrolling var
   const scrollInProgress = useRef(false); //boolean for throttling
 
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+  const handleScroll = () => {
     if(scrollInProgress.current){return;} //if scrolling do nothing
     scrollInProgress.current = true; //if not set scrolling to true
     setScroll((prev) => prev+1); //update scroll
