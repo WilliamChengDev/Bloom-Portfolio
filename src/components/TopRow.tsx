@@ -9,7 +9,7 @@ export default function TopRow(){
     
     gsap.registerPlugin(useGSAP, DrawSVGPlugin);
 
-    const [iconI] = useState(gsap.timeline({paused: true})); //gotta store timeline in state so it doesn't reload on DOM rerender
+    const [iconI, setIconI] = useState(gsap.timeline({paused: true})); //gotta store timeline in state so it doesn't reload on DOM rerender
     
     useGSAP(() => {
         iconI.to(".cls-s", {duration:.3,drawSVG: false, ease:"expo.in"});

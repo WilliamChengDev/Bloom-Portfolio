@@ -7,7 +7,7 @@ import { useState } from 'react';
 export default function TransitionCover(){
     gsap.registerPlugin( useGSAP );
 
-    const[transition] = useState(gsap.timeline({paused:true}));
+    const[transition, setTransition] = useState(gsap.timeline({paused:true}));
 
     useGSAP(() => {
         transition.fromTo(".transition-cover", {opacity:0}, {opacity:1, ease:"power1.in"});
