@@ -1,42 +1,46 @@
 import './App.css'
-import Loader from './pages/Loader'
-import Home from './pages/Home'
-import { useGSAP } from '@gsap/react';
 import { gsap } from "gsap";
-import TopRow from './components/TopRow';
-import TransitionCover from './components/TransitionCover';
+import { useGSAP } from '@gsap/react';
 import { useEffect, useRef, useState } from 'react';
+import PreLoader from './components/PreLoader';
+import TransitionCover from './components/TransitionCover';
+import Loader from './pages/Loader'
+import TopRow from './components/TopRow';
+import Home from './pages/Home'
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
+  const[loaded, setLoaded] = useState(false); //to track whether the component is loaded
+  const[loadertl] = useState(gsap.timeline({paused: true})); //intro animation timeline
 
   useGSAP(() => { //main animation timeline
-      console.log('page loaded')
-      var loadertl = gsap.timeline({repeat:0});
-      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:165, stagger:0.1, ease:"power2.out"});
-      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:0, stagger:0.1, ease:"expo"});
-      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:165, stagger:0.1, ease:"power2.out"});
-      loadertl.to(".cls-1", {duration:.8, strokeDashoffset:0, stagger:0.1, ease:"expo"});
-      loadertl.to(".loader-bg", {duration:.8, opacity:0, ease: 'power4.in'});
-      loadertl.fromTo("#line1",{translateX: '-200%'}, {duration:5, translateX: '0%', ease: 'power3.out'}, '<90%');
-      loadertl.from("#line2", {duration:5, translateX: '280em', ease: 'power2'}, '<');
-      loadertl.from("#line3", {duration:5, translateX: '-400em', ease: 'power2.out'}, '<');
-      loadertl.fromTo("#line4",{translateX: '-200%'}, {duration:4.4, translateX: '0%', ease: 'power4'}, '<');
-      loadertl.fromTo("#line5",{translateX: '0%'}, {duration:4.5, translateX: '-285%', ease: 'power2'}, '<');
-      loadertl.fromTo('#targetmaking',{opacity:.5}, {opacity:1}, '<75%');
-      loadertl.fromTo('#targetideas',{opacity:.5}, {opacity:1}, '<75%');
-      loadertl.to('.line', {opacity:0, delay: .5});
-      loadertl.to('.loader-contents', {opacity:0}, '<');
-      loadertl.to('.loader-contents', {display:"none"}, '<');
+      loadertl.to(".loader-bg", {duration:.8, opacity:0, ease: 'power4.in', delay:2.8}); //hide preloader, delay for final preload animation
+      loadertl.to(".loader-bg", {display:"none"}); //remove preloader
+      loadertl.fromTo("#line1",{translateX: '-200%'}, {duration:5, translateX: '0%', ease: 'power3.out'}, '<90%'); //text line animation
+      loadertl.from("#line2", {duration:5, translateX: '280em', ease: 'power2'}, '<'); //text line animation
+      loadertl.from("#line3", {duration:5, translateX: '-400em', ease: 'power2.out'}, '<'); //text line animation
+      loadertl.fromTo("#line4",{translateX: '-200%'}, {duration:4.4, translateX: '0%', ease: 'power4'}, '<'); //text line animation
+      loadertl.fromTo("#line5",{translateX: '0%'}, {duration:4.5, translateX: '-285%', ease: 'power2'}, '<'); //text line animation
+      loadertl.fromTo('#targetmaking',{opacity:.5}, {opacity:1}, '<75%'); //show "making"
+      loadertl.fromTo('#targetideas',{opacity:.5}, {opacity:1}, '<75%'); //show "ideas"
+      loadertl.to('.loader-contents', {opacity:0, delay:.5}); //hide lines animation
+      loadertl.to('.loader-contents', {display:"none"}); //display none, potentially better for performance compared to opacity 0
       //BELOW IS FROM home.tsx
-      loadertl.fromTo('.top-row', {display: "none"}, {display: "unset", delay: 0.01}, '<');
-      loadertl.fromTo(".flower-container", {opacity: 0}, {opacity:1, delay:.7}, '<');
-      loadertl.fromTo(".title", {opacity: 0}, {opacity:1}, '<');
+      loadertl.fromTo(".title", {opacity: 0}, {opacity:1, delay:0.1}, '<');
+      loadertl.fromTo(".flower-container", {opacity: 0}, {opacity:1, delay:.8}, '<');
+      loadertl.fromTo('.top-row', {opacity:0}, {opacity:1}, '<');
   });
+
+  useEffect(() => { //called when component is mounted
+    console.log('page loaded');
+    setLoaded(true); //set loaded to true, passes this info to Preloader
+  }, []);
+  const startPage = () => { //Preloader triggers this function, starts playing the intro
+      loadertl.play();
+  }
 
   const[scroll, setScroll] = useState(0); //scrolling var
   const scrollInProgress = useRef(false); //boolean for throttling
-
   const handleScroll = () => {
     if(scrollInProgress.current){return;} //if scrolling do nothing
     scrollInProgress.current = true; //if not set scrolling to true
@@ -46,18 +50,15 @@ export default function App() {
     }, 1500);
   }
 
-  useEffect(() => {
-    console.log(scroll);
-  })
-
   return (
     <>
-    <div className='app-container' onWheel={handleScroll}>
-      <TransitionCover page={scroll}/>
-      <Loader/>
-      <TopRow/>
-      <Home/>
-    </div>
+      <PreLoader loaded={loaded} trigger = {startPage}/>
+      <div className='app-container' onWheel={handleScroll}>
+        <TransitionCover page={scroll}/>
+        <Loader/>
+        <TopRow/>
+        <Home/>
+      </div>
     </> 
   )
 }

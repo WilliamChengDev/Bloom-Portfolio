@@ -1,8 +1,8 @@
 import './TopRow.css';
+import { useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { LoaderIconSmall } from "./loaderIconSmall";
-import { useState } from "react";
 
 export default function TopRow(){
     

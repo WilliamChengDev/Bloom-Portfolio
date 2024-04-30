@@ -1,14 +1,8 @@
-import { LoaderIcon } from '../components/loaderIcon'
 import './Loader.css'
 
 export default function Loader() {
     return (
         <div className='loader-contents'>
-            <div className='loader-bg'>
-                <div className='loader-container'>
-                    <LoaderIcon/>
-                </div>
-            </div>
             <div className='intro-bg'>
                 <div className='line' id='line1'>
                     <h1>Versatility</h1>

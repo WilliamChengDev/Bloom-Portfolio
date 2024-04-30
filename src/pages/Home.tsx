@@ -1,7 +1,7 @@
 import './Home.css';
+import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
-import { useState } from 'react';
 
 export default function Home(){
 
