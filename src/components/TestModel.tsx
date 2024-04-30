@@ -7,10 +7,8 @@ import { useEffect, useState } from 'react';
 
 export const TestModel = (props : {clientX : number, clientY: number}) => {
     gsap.registerPlugin(useGSAP);
-    const [camera, setCamera] = useState(useThree(state => state.camera)) ;
-    const[camX, setCamX] = useState(2); //front-back
-    const[camY, setCamY] = useState(0.6); //height
-    const[camZ, setCamZ] = useState(0); //left-right
+    const [camera] = useState(useThree(state => state.camera)) ;
+    const[camX] = useState(2); //front-back
     const[zTarget, setZTarget] = useState(0); //target to lerp to X
     const[yTarget, setYTarget] = useState(0); //target to lerp to Y
     
