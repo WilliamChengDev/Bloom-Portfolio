@@ -40,11 +40,18 @@ export default function App() {
   }
 
   const[scroll, setScroll] = useState(0); //scrolling var
+  const[pages] = useState([1, 2, 3]); //keep track of pages
   const scrollInProgress = useRef(false); //boolean for throttling
-  const handleScroll = () => {
+  console.log("on page " + pages[scroll]); //debugging
+  const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
     if(scrollInProgress.current){return;} //if scrolling do nothing
     scrollInProgress.current = true; //if not set scrolling to true
-    setScroll((prev) => prev+1); //update scroll
+    if(e.deltaY > 0 && scroll+1 < pages.length){ //if scrolling up
+      setScroll((prev) => prev+1); //update scroll
+    }
+    else if(e.deltaY < 0 && scroll-1 >= 0){
+      setScroll((prev) => prev-1); //update scroll
+    }
     setTimeout(() => { //check every 1000ms
       scrollInProgress.current = false; //set scrolling to false
     }, 1500);
@@ -53,11 +60,11 @@ export default function App() {
   return (
     <>
       <PreLoader loaded={loaded} trigger = {startPage}/>
-      <div className='app-container' onWheel={handleScroll}>
-        <TransitionCover page={scroll}/>
+      <div className='app-container' onWheel={(e) => handleScroll(e)}>
+        <TransitionCover page={pages[scroll]}/> {/* only triggers animation when scroll changes */}
         <Loader/>
         <TopRow/>
-        <Home/>
+        <Home page={pages[scroll]}/>
       </div>
     </> 
   )

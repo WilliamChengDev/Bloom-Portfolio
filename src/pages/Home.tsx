@@ -1,9 +1,11 @@
 import './Home.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { gsap } from "gsap";
+import { useGSAP } from '@gsap/react';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
 
-export default function Home(){
+export default function Home(props : {page : number}){
 
     const [mouseX, setMouseX] = useState(0);
     const [mouseY, setMouseY] = useState(0);
@@ -11,6 +13,17 @@ export default function Home(){
         setMouseX(e.clientX);
         setMouseY(e.clientY);
     }
+
+    useEffect(() => {
+        if(props.page != 1){
+            gsap.to(".home-page", {opacity:0, ease:"expo"})
+            gsap.to(".home-page", {display:"none"});
+        } else if(props.page == 1){
+            gsap.to(".home-page", {display:"block"});
+            gsap.to(".home-page", {opacity:1, ease:"expo", delay:.4});
+
+        }
+    }, [props.page]);
 
     return(
         <div className='home-page'>
