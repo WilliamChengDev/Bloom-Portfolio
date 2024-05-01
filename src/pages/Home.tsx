@@ -14,6 +14,9 @@ export default function Home(){
 
     return(
         <div className='home-page'>
+            <div className='title'>
+                <h1>BLOOM</h1>
+            </div>
             <div className='flower-container' onMouseMove={trackMouse}>
                 <Canvas style={{background: "rgba(255, 99, 71, 0)"}}>
                     <TestModel 
@@ -21,9 +24,6 @@ export default function Home(){
                         clientY = {mouseY}
                     />
                 </Canvas>
-            </div>
-            <div className='title'>
-                <h1>BLOOM</h1>
             </div>
         </div>
     )

@@ -29,11 +29,12 @@
     pointer-events: none;
     justify-content: center;
     align-items: center;
-    margin-top: 5em;
+    margin-top: 3.75em;
 }
 
 .title h1{
     color: var(--font-color);
-    font-family: 'General Sans Semibold';
-    font-size: 25vw;
+    font-family: 'Against';
+    font-weight: normal;
+    font-size: 35vh;
 }

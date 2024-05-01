@@ -31,10 +31,9 @@ export const TestModel = (props : {clientX : number, clientY: number}) => {
 
     return(
         <>
-            <axesHelper/>
             <HomeModelBaked/>
             <ambientLight intensity={3}/>
-            <fog attach="fog" color="#f4f0e8" near={2} far={7} />
+            <fog attach="fog" color="#f4f0e8" near={2} far={6} />
         </>
     );
 }
