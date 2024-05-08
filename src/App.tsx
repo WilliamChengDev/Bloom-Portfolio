@@ -12,6 +12,7 @@ export default function App() {
   gsap.registerPlugin(useGSAP);
   const[loaded, setLoaded] = useState(false); //to track whether the component is loaded
   const[loadertl] = useState(gsap.timeline({paused: true})); //intro animation timeline
+  const[introRunning, setIntroRunning] = useState(true); //check if the intro sequence is running
 
   useGSAP(() => { //main animation timeline
       loadertl.to(".loader-bg", {duration:.8, opacity:0, ease: 'power4.in', delay:2.8}); //hide preloader, delay for final preload animation
@@ -29,6 +30,7 @@ export default function App() {
       loadertl.fromTo(".title", {opacity: 0}, {opacity:1, delay:0.1}, '<');
       loadertl.fromTo(".flower-container", {opacity: 0}, {opacity:1, delay:.8}, '<');
       loadertl.fromTo('.top-row', {opacity:0}, {opacity:1}, '<');
+      loadertl.add(function(){setIntroRunning(false)}, "+=1");
   });
 
   useEffect(() => { //called when component is mounted
@@ -44,6 +46,7 @@ export default function App() {
   const scrollInProgress = useRef(false); //boolean for throttling
   console.log("on page " + pages[scroll]); //debugging
   const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
+    if(introRunning){return;} //if intro is running do nothing
     if(scrollInProgress.current){return;} //if scrolling do nothing
     scrollInProgress.current = true; //if not set scrolling to true
     if(e.deltaY > 0 && scroll+1 < pages.length){ //if scrolling up
