@@ -29,12 +29,12 @@
     pointer-events: none;
     justify-content: center;
     align-items: center;
-    margin-top: 3.75em;
+    margin-top: 5em;
 }
 
 .title h1{
     color: var(--font-color);
     font-family: 'Against';
     font-weight: normal;
-    font-size: 35vh;
+    font-size: 30vh;
 }

@@ -7,6 +7,7 @@ import TransitionCover from './components/TransitionCover';
 import Loader from './pages/Loader'
 import TopRow from './components/TopRow';
 import Home from './pages/Home'
+import Page1Blender from './pages/Page1Blender';
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -58,6 +59,7 @@ export default function App() {
         <Loader/>
         <TopRow/>
         <Home/>
+        <Page1Blender/>
       </div>
     </> 
   )
