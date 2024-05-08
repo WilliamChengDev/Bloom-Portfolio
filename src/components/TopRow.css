@@ -2,7 +2,7 @@
     width: 100vw;
     padding: 1em 0em 0em 1em;
     height: 3em;
-    display: flex;
+    display: flex; 
     position: fixed;
     z-index: 5;
     pointer-events: none;

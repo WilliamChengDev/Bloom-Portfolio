@@ -4,5 +4,5 @@
     height: 100vh;
     background-color: var(--bg-color);
     z-index: 100;
-    pointer-events: none;
+    display: none; /* change to unset on animation*/
 }

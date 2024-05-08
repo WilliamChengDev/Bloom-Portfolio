@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { LoaderIconSmall } from "./loaderIconSmall";
 
-export default function TopRow(){
+export default function TopRow(props : {setPage : any}){
     
     gsap.registerPlugin(useGSAP);
 
@@ -25,7 +25,7 @@ export default function TopRow(){
     return(
         <div className='top-row'>
             <div className='icon-container' onMouseEnter={HomeIconIn} onMouseLeave={HomeIconOut}>
-                <LoaderIconSmall/>
+                <LoaderIconSmall onClick={() => props.setPage(0)}/>
             </div>
         </div>
     );

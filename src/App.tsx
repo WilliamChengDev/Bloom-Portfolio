@@ -63,7 +63,7 @@ export default function App() {
       <div className='app-container' onWheel={(e) => handleScroll(e)}>
         <TransitionCover page={pages[scroll]}/> {/* only triggers animation when scroll changes */}
         <Loader/>
-        <TopRow/>
+        <TopRow setPage={setScroll}/>
         <Home page={pages[scroll]}/>
       </div>
     </> 
