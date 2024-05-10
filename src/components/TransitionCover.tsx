@@ -3,14 +3,16 @@ import { useEffect, useState } from 'react';
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
 
-export default function TransitionCover(props: {page: number}){
+export default function TransitionCover(props: {page: number, intro: boolean}){
     gsap.registerPlugin( useGSAP );
 
     const[transition] = useState(gsap.timeline({paused:true}));
 
     useEffect(() => {
-        transition.play(0); //temporarily disable
-        console.log("playing transition");
+        if(!props.intro){
+            transition.play(0); //temporarily disable
+            console.log("playing transition");
+        }
     }, [props.page]) //props in useEffect use "[]"
 
     useGSAP(() => {

@@ -64,7 +64,7 @@ export default function App() {
     <>
       <PreLoader loaded={loaded} trigger = {startPage}/>
       <div className='app-container' onWheel={(e) => handleScroll(e)}>
-        <TransitionCover page={pages[scroll]}/> {/* only triggers animation when scroll changes */}
+        <TransitionCover page={pages[scroll]} intro={introRunning}/> {/* only triggers animation when scroll changes */}
         <Loader/>
         <TopRow setPage={setScroll}/>
         <Home page={pages[scroll]}/>
