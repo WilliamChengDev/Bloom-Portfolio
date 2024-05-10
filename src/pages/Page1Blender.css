@@ -1,0 +1,49 @@
+.page-1-background{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image-1{
+    max-width: 28vw;
+    width: 28vw;
+    aspect-ratio: 1/1;
+    display:flex;
+    position: absolute;
+    /* overflow:hidden; */
+    background-size: cover;
+    filter: drop-shadow(1px 1px 20px rgba(0,0,0,0.4));
+    will-change: filter;
+    /* Experimental css 3D effects */
+    transform-style: preserve-3d;
+    perspective: 700px;
+}
+.main-image-1 :hover{
+    transform: rotateY(15deg);
+    transition-duration: 1s;
+}
+
+.main-image-1 img{
+    height: 100%;
+    margin-right: 10%;
+    -webkit-box-reflect: below 5em linear-gradient(transparent, transparent, #0004);
+}
+
+.running-banner{
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.running-banner h1{
+    color: var(--font-color);
+    font-family: 'Against';
+    font-weight: normal;
+    font-size: 1000%;
+    white-space: nowrap;
+}
