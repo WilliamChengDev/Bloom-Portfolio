@@ -8,6 +8,7 @@ import Loader from './pages/Loader'
 import TopRow from './components/TopRow';
 import Home from './pages/Home'
 import Page1Blender from './pages/Page1Blender';
+import Page2Journalism from './pages/Page2Journalism';
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -70,6 +71,7 @@ export default function App() {
         <TopRow setPage={setScroll}/>
         <Home page={pages[scroll]}/>
         <Page1Blender page={pages[scroll]}/>
+        <Page2Journalism page={pages[scroll]}/>
       </div>
     </> 
   )
