@@ -1,7 +1,6 @@
 import './Home.css';
 import { useEffect, useState } from 'react';
 import { gsap } from "gsap";
-import { useGSAP } from '@gsap/react';
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
 

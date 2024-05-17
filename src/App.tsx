@@ -69,7 +69,7 @@ export default function App() {
         <Loader/>
         <TopRow setPage={setScroll}/>
         <Home page={pages[scroll]}/>
-        <Page1Blender/>
+        <Page1Blender page={pages[scroll]}/>
       </div>
     </> 
   )

@@ -1,3 +1,7 @@
+.blender-page{
+    perspective: 700px;
+}
+
 .page-1-background{
     width: 100vw;
     height: 100vh;
@@ -17,16 +21,11 @@
     background-size: cover;
     filter: drop-shadow(1px 1px 20px rgba(0,0,0,0.4));
     will-change: filter;
-    /* Experimental css 3D effects */
-    transform-style: preserve-3d;
-    perspective: 700px;
-}
-.main-image-1 :hover{
-    transform: rotateY(15deg);
-    transition-duration: 1s;
+    perspective: 50em; /* apply perspective to the base*/
 }
 
 .main-image-1 img{
+    transform-style: preserve-3d; /* apply transform style to the object*/
     height: 100%;
     margin-right: 10%;
     -webkit-box-reflect: below 5em linear-gradient(transparent, transparent, #0004);
@@ -34,16 +33,31 @@
 
 .running-banner{
     height: 30vh;
-    width: 100%;
+    width: 100vw;  
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
+    overflow: hidden;
 }
 
 .running-banner h1{
     color: var(--font-color);
     font-family: 'Against';
     font-weight: normal;
-    font-size: 1000%;
+    font-size: 13vw;
+    /* white-space: nowrap; */
+}
+
+.banner-one{
+    margin: .7em;
+    width: 100vw;
+    white-space: nowrap;
+    /* margin-left: -100vw; */
+}
+
+.banner-two{
+    margin: .7em;
+    width: 100vw;
     white-space: nowrap;
 }

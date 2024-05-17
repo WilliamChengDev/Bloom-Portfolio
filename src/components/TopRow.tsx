@@ -25,7 +25,7 @@ export default function TopRow(props : {setPage : any}){
     return(
         <div className='top-row'>
             <div className='icon-container' onMouseEnter={HomeIconIn} onMouseLeave={HomeIconOut}>
-                <LoaderIconSmall onClick={() => props.setPage(0)}/>
+                <LoaderIconSmall onClick={() => props.setPage(0)}/> {/*use prop to set page state to 0 on App.tsx*/}
             </div>
         </div>
     );
