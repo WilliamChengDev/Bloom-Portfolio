@@ -32,9 +32,17 @@
     margin-top: 5em;
 }
 
-.title h1{
+
+#home-title{
     color: var(--font-color);
     font-family: 'Against';
     font-weight: normal;
-    font-size: 30vh;
+    font-size: 25vh;
 }
+
+
+@media screen and (max-width: 1300px) {
+    #home-title{
+        font-size: 20vw;
+    }
+  }

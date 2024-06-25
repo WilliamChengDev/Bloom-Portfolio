@@ -21,7 +21,7 @@ export default function Page1Blender(props : {page : number}){
     }
 
     useEffect(() => {
-        gsap.to('.main-image-2 img', {rotationY: mouseX*15, rotationX: mouseY*-5});
+        gsap.to('.main-image-2 img', {rotationY: mouseX*5, rotationX: mouseY*-5});
     }, [mouseX]);
 
     useEffect(() => {

@@ -1,11 +1,13 @@
 .top-row{
-    width: 100vw;
-    padding: 1em 0em 0em 1em;
+    width: 100%;
     height: 3em;
+    padding-bottom: 100em;
+    padding-top: 1em;
     display: flex; 
+    justify-content: space-between;
     position: fixed;
     z-index: 5;
-    pointer-events: none;
+    pointer-events:none;
 }
 
 .icon-container{
@@ -14,5 +16,71 @@
     aspect-ratio: 1/1;
     display: flex;
     pointer-events: all;
+    padding-left: 1em;
     /* DO NOT USE ANY JUSTIFY OR ANY ALIGN FOR SVG OR WILL NOT SHOW   */
+}
+
+.menu{
+    height: 100%;
+    width: 20%;
+    /* aspect-ratio: 1; */
+    display: flex;
+    margin-right: 1em;
+    background-color: var(--font-color);
+    border-radius: 1.55em;
+    pointer-events: none;
+    align-items: flex-end;
+    flex-direction: column;
+    will-change: filter;
+}
+
+.menu-icon-container{
+    padding-right: 1em;
+    padding-top: 1em;
+    width: 1.5em;
+    pointer-events: all;
+}
+
+#menu-icon{
+    opacity: 1;
+}
+
+.menu-contents{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.row1{
+    width: 98%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    margin: 1%;
+}
+
+.menu-compartment{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    height: 98%;
+    border-radius: 1.55em;
+    background-color: var(--bg-color);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.menu-compartment svg{
+    width: 50%;
+    margin: 5%;
+}
+
+.menu-compartment h1{
+    font-family: 'General Sans Semibold', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: var(--font-color);
+    font-size: 150%;
 }

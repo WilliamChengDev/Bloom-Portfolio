@@ -63,16 +63,16 @@ export default function App() {
   }
 
   return (
-    <>
-      <PreLoader loaded={loaded} trigger = {startPage}/>
-      <div className='app-container' onWheel={(e) => handleScroll(e)}>
-        <TransitionCover page={pages[scroll]} intro={introRunning}/> {/* only triggers animation when scroll changes */}
-        <Loader/>
-        <TopRow setPage={setScroll}/>
-        <Home page={pages[scroll]}/>
-        <Page1Blender page={pages[scroll]}/>
-        <Page2Journalism page={pages[scroll]}/>
-      </div>
-    </> 
+      <>
+        <PreLoader loaded={loaded} trigger = {startPage}/>
+        <div className='app-container' onWheel={(e) => handleScroll(e)}>
+          <TransitionCover page={pages[scroll]} intro={introRunning}/> {/* only triggers animation when scroll changes */}
+          <Loader/>
+          <TopRow setPage={setScroll}/>
+          <Home page={pages[scroll]}/>
+          <Page1Blender page={pages[scroll]}/>
+          <Page2Journalism page={pages[scroll]}/>
+        </div>
+      </> 
   )
 }

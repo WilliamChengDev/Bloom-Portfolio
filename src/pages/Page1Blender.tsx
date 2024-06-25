@@ -3,8 +3,10 @@ import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
 import Room from "../assets/Blender/Compressed/My Room.png"
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Page1Blender(props : {page : number}){
+
     const[bannerTl] = useState(gsap.timeline({repeat: -1, paused: false}));
     gsap.registerPlugin(useGSAP);
 
@@ -33,13 +35,13 @@ export default function Page1Blender(props : {page : number}){
             gsap.to(".blender-page", {opacity:1, ease:"expo", delay:.4});
         }
     }, [[props.page]]);
-    
+
     return(
         <div className="blender-page" onMouseMove={trackMouse}>
             <div className="page-1-background">
-                <div className="main-image-1">
+                <a className="main-image-1" href="/Bloom-Portfolio/Blender">
                     <img src={Room} alt="My Room Render" />
-                </div>
+                </a>
                 <div className="running-banner">
                     <div className="banner-one">
                         <h1>BLENDER-3D</h1>

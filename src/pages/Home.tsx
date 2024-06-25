@@ -27,7 +27,7 @@ export default function Home(props : {page : number}){
     return(
         <div className='home-page'>
             <div className='title'>
-                <h1>BLOOM</h1>
+                <h1 id='home-title'>BLOOM</h1>
             </div>
             <div className='flower-container' onMouseMove={trackMouse}>
                 <Canvas style={{background: "rgba(255, 99, 71, 0)"}}>
