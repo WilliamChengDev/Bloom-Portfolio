@@ -7,8 +7,11 @@ import TransitionCover from './components/TransitionCover';
 import Loader from './pages/Loader'
 import TopRow from './components/TopRow';
 import Home from './pages/Home'
-import Page1Blender from './pages/Page1Blender';
-import Page2Journalism from './pages/Page2Journalism';
+// import Page1Blender from './pages/Page1Blender';
+// import Page2Journalism from './pages/Page2Journalism';
+import Page from './pages/Page'
+import Room from "./assets/Blender/Compressed/My Room.png"
+import SilencedSpeech from "./assets/Journalism/Silenced Speech.png"
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -46,10 +49,12 @@ export default function App() {
   const[scroll, setScroll] = useState(0); //scrolling var
   const[pages] = useState([1, 2, 3]); //keep track of pages
   const scrollInProgress = useRef(false); //boolean for throttling
+  const[inPage, setInPage] = useState(false); //keep track of whether or not a user is scrolling inside a page
   console.log("on page " + pages[scroll]); //debugging
   const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
     if(introRunning){return;} //if intro is running do nothing
     if(scrollInProgress.current){return;} //if scrolling do nothing
+    if(inPage){return;} //if inside a page do nothing
     scrollInProgress.current = true; //if not set scrolling to true
     if(e.deltaY > 0 && scroll+1 < pages.length){ //if scrolling up
       setScroll((prev) => prev+1); //update scroll
@@ -70,8 +75,8 @@ export default function App() {
           <Loader/>
           <TopRow setPage={setScroll}/>
           <Home page={pages[scroll]}/>
-          <Page1Blender page={pages[scroll]}/>
-          <Page2Journalism page={pages[scroll]}/>
+          <Page name={"blender"} setPage={2} setTitle={"BLENDER-3D"} mainImg={Room} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
+          <Page name={"journalism"} setPage={3} setTitle={"JOURNALISM"} mainImg={SilencedSpeech} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
         </div>
       </> 
   )

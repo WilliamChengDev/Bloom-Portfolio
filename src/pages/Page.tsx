@@ -1,10 +1,10 @@
-import "./Page1Blender.css";
+import "./Page.css";
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
-import Room from "../assets/Blender/Compressed/My Room.png"
+// import Room from "../assets/Blender/Compressed/My Room.png"
 import { useEffect, useState } from "react";
 
-export default function Page1Blender(props : {page : number, inPage : boolean, setInPage : React.Dispatch<React.SetStateAction<boolean>>}){
+export default function Page1Blender(props : {name: string, setPage: number, setTitle: string, mainImg: string, page : number, inPage : boolean, setInPage : React.Dispatch<React.SetStateAction<boolean>>}){
     const[bannerTl] = useState(gsap.timeline({repeat: -1, paused: false}));
     const[pageIntroTl] = useState(gsap.timeline({repeat: 0, paused: true}));
     // const[inPage, setInPage] = useState(false);
@@ -15,8 +15,7 @@ export default function Page1Blender(props : {page : number, inPage : boolean, s
         bannerTl.to(".banner-one", {marginLeft: '-100vw', duration: 6, ease: "none"});
         bannerTl.to(".banner-one", {marginLeft: '.7em', duration: 0, ease: "none"});
         //Blender page loading animation
-        // pageIntroTl.add(function(){props.setInPage(!props.inPage)})
-        pageIntroTl.to(".main-image-1", {width:"100%", top:"100vh", duration:1, ease: "power3.out"})
+        pageIntroTl.to(`#main-image-${props.name}`, {width:"100%", top:"100vh", duration:1, ease: "power3.out"})
         pageIntroTl.to(".page-contents", {marginTop: "-59em", duration:1, ease: "power3.out"})
     })
 
@@ -32,49 +31,52 @@ export default function Page1Blender(props : {page : number, inPage : boolean, s
         }
     }
     useEffect(() => { //handle tracking of main image on mouse move
-        gsap.to('.main-image-1 img', {rotationY: mouseX*15, rotationX: mouseY*-5});
+        gsap.to('.main-image img', {rotationY: mouseX*15, rotationX: mouseY*-5});
     }, [mouseX]);
 
     useEffect(() => { //handle loading in and out of the page
-        if(props.page != 2){
+        if(props.page != props.setPage){
+                console.log("out of page")
             props.setInPage(false)
             pageIntroTl.reverse();
-            gsap.to(".blender-page", {opacity:0, ease:"expo"})
-            gsap.to(".blender-page", {display:"none"});
-        } else if(props.page == 2){
-            gsap.to(".blender-page", {display:"block"});
-            gsap.to(".blender-page", {opacity:1, ease:"expo", delay:.4});
+            gsap.to(`#${props.name}`, {opacity:0, ease:"expo"})
+            gsap.to(`#${props.name}`, {display:"none"});
+        } else if(props.page == props.setPage){
+            gsap.to(`#${props.name}`, {display:"block"});
+            gsap.to(`#${props.name}`, {opacity:1, ease:"expo", delay:.4});
         }
     }, [[props.page]]);
 
     const pageIntro = () => {
+        console.log("in page")
         props.setInPage(true);
         pageIntroTl.play();
     }
 
     const pageOutro = () => {
         pageIntroTl.reverse()
+        console.log("out of page")
         props.setInPage(false);
     }
 
     return(
-        <div className="blender-page" onMouseMove={trackMouse}>
-            <div className="page-1-background">
-                <div className="main-image-1" onClick={pageIntro}>
-                    <img src={Room} alt="My Room Render" />
+        <div id={props.name} className="page" onMouseMove={trackMouse}>
+            <div className="page-background">
+                <div id={`main-image-${props.name}`} className="main-image" onClick={pageIntro}>
+                    <img src={props.mainImg} alt="My Room Render" />
                 </div>
                 <div className="running-banner">
                     <div className="banner-one">
-                        <h1>BLENDER-3D</h1>
+                        <h1>{props.setTitle}</h1>
                     </div>
                     <div className="banner-two">
-                        <h1>BLENDER-3D</h1>
+                        <h1>{props.setTitle}</h1>
                     </div>
                 </div>
             </div>
             <div className="page-contents">
                 <div className="content-hero">
-                    <img src={Room} alt="My Room Render" />
+                    <img src={props.mainImg} alt="My Room Render" />
                 </div>
                 <div className="page-back">
                     <button onClick={pageOutro}>BACK</button>
