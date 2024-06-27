@@ -1,13 +1,11 @@
 import "./Page.css";
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
-// import Room from "../assets/Blender/Compressed/My Room.png"
 import { useEffect, useState } from "react";
 
 export default function Page1Blender(props : {name: string, setPage: number, setTitle: string, mainImg: string, page : number, inPage : boolean, setInPage : React.Dispatch<React.SetStateAction<boolean>>}){
     const[bannerTl] = useState(gsap.timeline({repeat: -1, paused: false}));
     const[pageIntroTl] = useState(gsap.timeline({repeat: 0, paused: true}));
-    // const[inPage, setInPage] = useState(false);
     gsap.registerPlugin(useGSAP);
 
     useGSAP(() => {
@@ -16,7 +14,7 @@ export default function Page1Blender(props : {name: string, setPage: number, set
         bannerTl.to(".banner-one", {marginLeft: '.7em', duration: 0, ease: "none"});
         //Blender page loading animation
         pageIntroTl.to(`#main-image-${props.name}`, {width:"100%", top:"100vh", duration:1, ease: "power3.out"})
-        pageIntroTl.to(".page-contents", {marginTop: "-59em", duration:1, ease: "power3.out"})
+        pageIntroTl.to(".page-contents", {marginTop: "-51em", duration:1, ease: "power3.out"})
     })
 
     const [mouseX, setMouseX] = useState(0);
@@ -36,8 +34,7 @@ export default function Page1Blender(props : {name: string, setPage: number, set
 
     useEffect(() => { //handle loading in and out of the page
         if(props.page != props.setPage){
-                console.log("out of page")
-            props.setInPage(false)
+        //     props.setInPage(false)
             pageIntroTl.reverse();
             gsap.to(`#${props.name}`, {opacity:0, ease:"expo"})
             gsap.to(`#${props.name}`, {display:"none"});
@@ -48,21 +45,19 @@ export default function Page1Blender(props : {name: string, setPage: number, set
     }, [[props.page]]);
 
     const pageIntro = () => {
-        console.log("in page")
         props.setInPage(true);
         pageIntroTl.play();
     }
 
     const pageOutro = () => {
         pageIntroTl.reverse()
-        console.log("out of page")
         props.setInPage(false);
     }
 
     return(
         <div id={props.name} className="page" onMouseMove={trackMouse}>
             <div className="page-background">
-                <div id={`main-image-${props.name}`} className="main-image" onClick={pageIntro}>
+                <div id={`main-image-${props.name}`} className="main-image" onClick={() => pageIntro()}>
                     <img src={props.mainImg} alt="My Room Render" />
                 </div>
                 <div className="running-banner">
@@ -79,7 +74,7 @@ export default function Page1Blender(props : {name: string, setPage: number, set
                     <img src={props.mainImg} alt="My Room Render" />
                 </div>
                 <div className="page-back">
-                    <button onClick={pageOutro}>BACK</button>
+                    <button onClick={() => pageOutro()}>BACK</button>
                 </div>
             </div>
         </div>
