@@ -1,17 +1,10 @@
 import './Home.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { gsap } from "gsap";
 import { Canvas } from '@react-three/fiber';
 import { TestModel } from '../components/TestModel';
 
-export default function Home(props : {page : number}){
-
-    const [mouseX, setMouseX] = useState(0);
-    const [mouseY, setMouseY] = useState(0);
-    const trackMouse = (e:React.MouseEvent) => {
-        setMouseX(e.clientX);
-        setMouseY(e.clientY);
-    }
+export default function Home(props : {page : number, mouseX: number, mouseY:number}){
 
     useEffect(() => {
         if(props.page != 1){
@@ -29,11 +22,11 @@ export default function Home(props : {page : number}){
             <div className='title'>
                 <h1 id='home-title'>BLOOM</h1>
             </div>
-            <div className='flower-container' onMouseMove={trackMouse}>
+            <div className='flower-container'>
                 <Canvas style={{background: "rgba(255, 99, 71, 0)"}}>
                     <TestModel 
-                        clientX = {mouseX}
-                        clientY = {mouseY}
+                        clientX = {props.mouseX}
+                        clientY = {props.mouseY}
                     />
                 </Canvas>
             </div>

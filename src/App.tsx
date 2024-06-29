@@ -11,6 +11,7 @@ import Page from './pages/Page'
 import Room from "./assets/My Room/My Room.png"
 import SilencedSpeech from "./assets/Journalism/Silenced Speech.png"
 import Blender from './pages/Home Slides/Blender';
+import Cursor from './components/Cursor';
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -68,16 +69,25 @@ export default function App() {
     }, 1500);
   }
 
+  const[mouseX, setMouseX] = useState(0);
+  const[mouseY, setMouseY] = useState(0);
+
+  const trackMouse = (e:React.MouseEvent) => {
+    setMouseX(e.clientX);
+    setMouseY(e.clientY);
+}
+
   return (
       <>
         <PreLoader loaded={loaded} trigger = {startPage}/>
-        <div className='app-container' onWheel={(e) => handleScroll(e)}>
-          <TransitionCover page={pages[scroll]} intro={introRunning}/> {/* only triggers animation when scroll changes */}
+        <div className='app-container' onWheel={(e) => handleScroll(e)} onMouseMove={trackMouse}>
           <Loader/>
+          <Cursor mouseX={mouseX} mouseY={mouseY}/>
+          <TransitionCover page={pages[scroll]} intro={introRunning}/> {/* only triggers animation when scroll changes */}
           <TopRow setPage={setScroll}/>
-          <Home page={pages[scroll]}/>
-          <Page name={"blender"} setPage={2} setTitle={"BLENDER-3D"} mainImg={Room} content={<Blender/>} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
-          <Page name={"journalism"} setPage={3} setTitle={"JOURNALISM"} mainImg={SilencedSpeech} content={<Blender/>} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
+          <Home page={pages[scroll]} mouseX={mouseX} mouseY={mouseY}/>
+          <Page mouseX={mouseX} mouseY={mouseY} name={"blender"} setPage={2} setTitle={"BLENDER-3D"} mainImg={Room} content={<Blender/>} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
+          <Page mouseX={mouseX} mouseY={mouseY} name={"journalism"} setPage={3} setTitle={"JOURNALISM"} mainImg={SilencedSpeech} content={<Blender/>} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
         </div>
       </> 
   )

@@ -9,6 +9,7 @@
     position: absolute;
     overflow: hidden;
     pointer-events: none;
+    z-index: 5;
   }
   
   .intro-bg{

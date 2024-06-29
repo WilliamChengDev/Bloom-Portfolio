@@ -3,6 +3,7 @@
     height: 100vh;
     background-color: var(--bg-color);
     overflow: scroll;
+    position: relative;
 }
 
 .flower-container{
@@ -29,7 +30,7 @@
     pointer-events: none;
     justify-content: center;
     align-items: center;
-    margin-top: 5em;
+    margin-top: 7em;
 }
 
 

@@ -1,8 +1,9 @@
 .transition-cover{
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 93vh;
     background-color: var(--bg-color);
     z-index: 100;
     display: none; /* change to unset on animation*/
+    top: 8vh;
 }

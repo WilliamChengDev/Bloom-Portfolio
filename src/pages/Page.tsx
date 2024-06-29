@@ -4,6 +4,8 @@ import { useGSAP } from '@gsap/react';
 import { useEffect, useState } from "react";
 
 export default function Page1Blender(props : {
+                mouseX: number,
+                mouseY: number,
                 name: string, 
                 setPage: number, 
                 setTitle: string, 
@@ -27,20 +29,9 @@ export default function Page1Blender(props : {
         pageIntroTl.to(".page-contents", {marginTop: "-100vh", duration:1, ease: "power3.out"})
     })
 
-    const [mouseX, setMouseX] = useState(0);
-    const [mouseY, setMouseY] = useState(0);
-    const trackMouse = (e:React.MouseEvent) => { //mouse tracking function
-        if(props.inPage){
-            setMouseX(0);
-            setMouseY(0);
-        } else{
-            setMouseX((e.clientX - window.innerWidth/2)/window.innerWidth*2);
-            setMouseY((e.clientY - window.innerHeight/2)/window.innerHeight*2);
-        }
-    }
     useEffect(() => { //handle tracking of main image on mouse move
-        gsap.to('.main-image img', {rotationY: mouseX*15, rotationX: mouseY*-5});
-    }, [mouseX]);
+        gsap.to('.main-image img', {rotationY: props.mouseX*0.05, rotationX: props.mouseY*0.05});
+    }, [props.mouseX, props.mouseY]);
 
     useEffect(() => { //handle loading in and out of the page
         if(props.page != props.setPage){
@@ -64,12 +55,8 @@ export default function Page1Blender(props : {
         props.setInPage(false);
     }
 
-    const test = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        console.log(e.target)
-    }
-
     return(
-        <div id={props.name} className="page" onMouseMove={trackMouse}>
+        <div id={props.name} className="page">
             <div className="page-background">
                 <div id={`main-image-${props.name}`} className="main-image" onClick={() => pageIntro()}>
                         <img src={props.mainImg} alt="My Room Render" />
@@ -84,7 +71,7 @@ export default function Page1Blender(props : {
                 </div>
             </div>
             <div className="page-contents">
-                <div className="inner-content" onClick={(e) => test(e)}>
+                <div className="inner-content">
                         {props.content}
                 </div>
                 <div className="page-back">
