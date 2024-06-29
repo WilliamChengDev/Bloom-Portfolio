@@ -17,6 +17,10 @@
   src: url('./fonts/GeneralSans-Medium.woff2');
 }
 @font-face {
+  font-family: 'General Sans Extralight';
+  src: url('./fonts/GeneralSans-Extralight.woff2');
+}
+@font-face {
   font-family: 'Against';
   src: url('./fonts/Against.woff2');
 }

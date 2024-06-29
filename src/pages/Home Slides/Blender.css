@@ -1,0 +1,138 @@
+.blender-page{
+        width: 100vw;
+        height: fit-content;
+        background-color: var(--bg-color);
+}
+
+.blender-hero-img{
+        width: 100%;
+        height: 60vh;
+        overflow: hidden;
+}
+
+.blender-hero-img img{
+        margin-top: -10%;
+        width: 100%;
+        filter: brightness(50%);
+}
+
+.my-room-title{
+        z-index: 3;
+        width: 100vw;
+        height: fit-content;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 16em;
+}
+
+.blender-hero-img h1{
+        font-family: 'General Sans Semibold', Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: var(--bg-color);
+        font-size: 10vw;
+}
+
+.blender-row-1{
+        display: flex;
+        width: 96%;
+        height: fit-content;
+        justify-content: space-around;
+        margin: 2%;
+        position: relative;
+}
+
+.my-room-video{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.my-room-video iframe{
+        width: 70%;
+}
+
+.text-container{
+        margin: 4%;
+}
+
+@media screen and (max-aspect-ratio:0.75) {
+        .blender-hero-img{
+                height: 30vh !important;
+        }
+        .blender-row-1{
+                flex-direction: column-reverse;
+        }
+        .my-room-description{
+                justify-content: center;
+                width: 90% !important;
+        }
+        .my-room-video{
+                width: 90% !important;
+                margin: 5%;
+        }
+        .my-room-video iframe{
+                width: 100% !important;
+        }
+}
+
+.my-room-description{
+        display: flex;
+        align-items: center;
+        width: 40%;
+        margin: 5%;
+}
+
+p{
+        font-family: 'General Sans Medium', Arial, Helvetica, sans-serif;
+        color: var(--font-color);
+        font-size: large;
+}
+
+.my-room-yt{
+        width: 60%;
+        height: fit-content;
+
+}
+
+.blender-row-animation{
+        width: 90%;
+        aspect-ratio: 1920/1080;
+        margin: 5%;
+        overflow: hidden;
+}
+
+
+.my-room-moving-row img{
+        width: 25%;
+}
+
+.my-room-moving-row{
+        width: 400%;
+        display: flex;
+        flex-direction: row;
+        margin-left: 0%;
+}
+
+.my-room-stills{
+        margin: 3%;
+        width: 54%;
+        aspect-ratio: 1/1;
+        position: relative;
+}
+
+.my-room-stills img{
+        position: absolute;
+        width: 100%;
+        opacity: 0;
+}
+
+.text-container-block{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4%;
+        width: 32%;
+}

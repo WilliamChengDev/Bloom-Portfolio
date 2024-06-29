@@ -7,11 +7,10 @@ import TransitionCover from './components/TransitionCover';
 import Loader from './pages/Loader'
 import TopRow from './components/TopRow';
 import Home from './pages/Home'
-// import Page1Blender from './pages/Page1Blender';
-// import Page2Journalism from './pages/Page2Journalism';
 import Page from './pages/Page'
-import Room from "./assets/Blender/Compressed/My Room.png"
+import Room from "./assets/My Room/My Room.png"
 import SilencedSpeech from "./assets/Journalism/Silenced Speech.png"
+import Blender from './pages/Home Slides/Blender';
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -56,6 +55,7 @@ export default function App() {
     if(introRunning){return;} //if intro is running do nothing
     if(scrollInProgress.current){return;} //if scrolling do nothing
     if(inPage){return;} //if inside a page do nothing
+    if((pages[scroll] == pages.length && e.deltaY > 0) || (pages[scroll] == 0 && e.deltaY < 0)){return;} //if at ends do nothing
     scrollInProgress.current = true; //if not set scrolling to true
     if(e.deltaY > 0 && scroll+1 < pages.length){ //if scrolling up
       setScroll((prev) => prev+1); //update scroll
@@ -76,8 +76,8 @@ export default function App() {
           <Loader/>
           <TopRow setPage={setScroll}/>
           <Home page={pages[scroll]}/>
-          <Page name={"blender"} setPage={2} setTitle={"BLENDER-3D"} mainImg={Room} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
-          <Page name={"journalism"} setPage={3} setTitle={"JOURNALISM"} mainImg={SilencedSpeech} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
+          <Page name={"blender"} setPage={2} setTitle={"BLENDER-3D"} mainImg={Room} content={<Blender/>} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
+          <Page name={"journalism"} setPage={3} setTitle={"JOURNALISM"} mainImg={SilencedSpeech} content={<Blender/>} page={pages[scroll]} inPage={inPage} setInPage={setInPage}/>
         </div>
       </> 
   )
