@@ -41,6 +41,7 @@
         justify-content: space-around;
         margin: 2%;
         position: relative;
+        background-color: var(--bg-color);
 }
 
 .my-room-video{

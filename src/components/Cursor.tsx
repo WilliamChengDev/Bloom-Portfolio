@@ -9,7 +9,6 @@ export default function Cursor(props: {mouseX: number, mouseY:number}) {
         useEffect(() => {
                 const yPosition = props.mouseY - window.innerHeight*0.05;
                 const xPosition = props.mouseX - window.innerWidth*0.05;
-                console.log("tracking position")
                 gsap.to(".cursor", {top:yPosition, left:xPosition})
         }, [props.mouseX, props.mouseY])
 

@@ -27,10 +27,15 @@ export default function Page1Blender(props : {
         //Blender page loading animation
         pageIntroTl.to(`#main-image-${props.name}`, {width:"100%", top:"120vh", duration:1, ease: "power2.out"})
         pageIntroTl.to(".page-contents", {marginTop: "-100vh", duration:1, ease: "power3.out"})
+        pageIntroTl.to(".running-banner", {display:"none"}, '<')
     })
 
     useEffect(() => { //handle tracking of main image on mouse move
-        gsap.to('.main-image img', {rotationY: props.mouseX*0.05, rotationX: props.mouseY*0.05});
+        if(!props.inPage){
+                const rotationHorizontal = (props.mouseX - (window.innerWidth/2))*0.05
+                const rotationVertical = (props.mouseY - (window.innerHeight/2))*-0.05
+                gsap.to('.main-image img', {rotationY: rotationHorizontal, rotationX: rotationVertical});
+        }
     }, [props.mouseX, props.mouseY]);
 
     useEffect(() => { //handle loading in and out of the page

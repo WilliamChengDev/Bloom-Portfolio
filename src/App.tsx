@@ -50,7 +50,7 @@ export default function App() {
   const[pages] = useState([1, 2, 3]); //keep track of pages
   const scrollInProgress = useRef(false); //boolean for throttling
   const[inPage, setInPage] = useState(false); //keep track of whether or not a user is scrolling inside a page
-  {(inPage ? console.log("Currently in page") : console.log("Currently not in page"))}
+  // {(inPage ? console.log("Currently in page") : console.log("Currently not in page"))}
   // console.log("on page " + pages[scroll]); //debugging
   const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
     if(introRunning){return;} //if intro is running do nothing
